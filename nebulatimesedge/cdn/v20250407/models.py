@@ -12605,9 +12605,9 @@ class DescribeOriginDataResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Interval = params.get("Interval")
-        if params.get("Data") is not None:
+        if params.get("OriginData") is not None:
             self._Data = []
-            for item in params.get("Data"):
+            for item in params.get("OriginData"):
                 obj = ResourceOriginData()
                 obj._deserialize(item)
                 self._Data.append(obj)

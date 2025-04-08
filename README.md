@@ -1,9 +1,8 @@
 # nebulatimes-sdk-python
 
-
 ## Example
 
-https://console.cloud.tencent.com/api/explorer?Product=cdn&Version=2018-06-06&Action=DescribeCdnData
+[DescribeOriginData](https://console.cloud.tencent.com/api/explorer?Product=cdn&Version=2018-06-06&Action=DescribeOriginData)
 
 ```go
 # -*- coding: utf-8 -*-
@@ -21,7 +20,7 @@ try:
     # 以下代码示例仅供参考，建议采用更安全的方式来使用密钥
     # 请参见：https://cloud.tencent.com/document/product/1278/85305
     # 密钥可前往官网控制台 https://console.cloud.tencent.com/cam/capi 进行获取
-    cred = credential.Credential("xxxxxx", "xxxxxx")
+    cred = credential.Credential("ak", "sk")
     # 实例化一个http选项，可选的，没有特殊需求可以跳过
     httpProfile = HttpProfile()
     httpProfile.endpoint = "cdnapi.nebulatimes.com"
@@ -33,17 +32,17 @@ try:
     client = cdn_client.CdnClient(cred, "", clientProfile)
 
     # 实例化一个请求对象,每个接口都会对应一个request对象
-    req = models.DescribeCdnDataRequest()
+    req = models.DescribeOriginDataRequest()
     params = {
         "Action":    "DescribeOriginData",
         "StartTime": "2025-04-01 00:00:00",
-        "EndTime":   "2025-04-01 00:05:59",
-        "Metric":   "flux",
+        "EndTime":   "2025-04-01 00:55:59",
+        "Metric":    "flux",
     }
     req.from_json_string(json.dumps(params))
 
-    # 返回的resp是一个DescribeCdnDataResponse的实例，与请求对象对应
-    resp = client.DescribeCdnData(req)
+    # 返回的resp是一个DescribeOriginDataResponse的实例，与请求对象对应
+    resp = client.DescribeOriginData(req)
     # 输出json格式的字符串回包
     print(resp.to_json_string())
 
